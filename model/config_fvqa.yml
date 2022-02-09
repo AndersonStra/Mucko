@@ -1,0 +1,89 @@
+# Dataset reader arguments
+dataset:
+  
+  word_counts_json: "/home/data/yjgroup/zzh/pr/data/fvqa_data6_1/word_count.json"
+  glove_vec_path: "/home/data/yjgroup/zzh/pr/data/fvqa_data6_1/glove300dvocab.npy"
+
+  max_question_length: 18
+  vocab_min_count: 3
+  img_norm: 1
+
+  
+  test:
+    test_facts_graph: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/test_fact_graph_feature.npz
+    test_image_features: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/test_image_feature.npz
+    test_qa_raw: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/test_qa_raw.pickle
+    test_semantic_graph: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/test_semantic_graph_feature.npz
+  train:
+    train_facts_graph: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/train_fact_graph_feature.npz
+    train_image_features: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/train_image_feature.npz
+    train_qa_raw: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/train_qa_raw.pickle
+#    train_qa_raw: /home/data/yjgroup/zzh/open_pr/model/test_data/test_qa_raw.pickle
+    train_semantic_graph: /home/data/yjgroup/zzh/pr/data/fvqa_data6_1/exp12/train_semantic_graph_feature.npz
+  
+# Model related arguments
+model:
+  img_feature_size: 2048
+  word_embedding_size: 300
+  lstm_hidden_size: 512
+  lstm_num_layers: 2
+  dropout: 0.5
+
+  glove_embedding_size: 300
+
+  #question to vis node attention 1
+  node_att_ques_img_proj_dims: 2048
+
+  #question to vis relation attention 1
+  vis_relation_dims: 7
+  rel_att_ques_rel_proj_dims: 512
+
+  #question to semantic node attention 1
+  sem_node_dims: 300
+  sem_node_att_ques_img_proj_dims: 512
+
+  #question to semantic relation attention 1
+  sem_relation_dims: 300
+  sem_rel_att_ques_rel_proj_dims: 512
+
+  #question to fact relation attention 1
+  fact_node_dims: 300
+  fact_node_att_ques_node_proj_dims: 1024
+
+  # image_gcn1
+  image_gcn1_out_dim: 1024
+
+  #semantic gcn1
+  semantic_gcn1_out_dim: 300
+
+  # fact gcn1
+  fact_gcn1_out_dim: 300
+
+  # visual memory network
+  visual_memory_query_hidden_size: 300
+  visual_memory_memory_hidden_size: 300
+  visual_memory_memory_read_att_size: 300
+
+  memory_step: 2
+
+  # semantic memtory network
+  semantic_memory_query_hidden_size: 300
+  semantic_memory_memory_hidden_size: 300
+  semantic_memory_memory_read_att_size: 300
+
+  #memory gate
+  memory_gate_out_dim: 128
+
+# Optimization related arguments
+solver:
+  batch_size: 16
+  num_epochs: 100
+  initial_lr: 0.001
+  lr_gamma: 0.7
+  lr_milestones:
+    - 5
+    - 7
+    - 10
+  warmup_factor: 0.2
+  warmup_epochs: 2
+  eta_min: 0.00034

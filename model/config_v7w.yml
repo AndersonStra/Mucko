@@ -1,0 +1,73 @@
+# Dataset reader arguments
+dataset:
+  
+  max_question_length: 11
+  img_norm: 1
+  vocab_min_count: 1
+
+# Model related arguments
+model:
+  img_feature_size: 2048
+  word_embedding_size: 300
+  lstm_hidden_size: 512
+  lstm_num_layers: 2
+  dropout: 0.5
+
+  glove_embedding_size: 300
+
+  #question to vis node attention 1
+  node_att_ques_img_proj_dims: 2048
+
+  #question to vis relation attention 1
+  vis_relation_dims: 7
+  rel_att_ques_rel_proj_dims: 512
+
+  #question to semantic node attention 1
+  sem_node_dims: 300
+  sem_node_att_ques_img_proj_dims: 512
+
+  #question to semantic relation attention 1
+  sem_relation_dims: 300
+  sem_rel_att_ques_rel_proj_dims: 512
+
+  #question to fact node attention 1
+  fact_node_dims: 300
+  fact_node_att_ques_node_proj_dims: 512
+
+  # image_gcn1
+  image_gcn1_out_dim: 1024
+
+  #semantic gcn1
+  semantic_gcn1_out_dim: 300
+
+  # fact gcn1
+  fact_gcn1_out_dim: 300
+
+  # visual memory network
+  visual_memory_query_hidden_size: 300
+  visual_memory_memory_hidden_size: 300
+  visual_memory_memory_read_att_size: 300
+
+  memory_step: 5
+
+  # semantic memtory network
+  semantic_memory_query_hidden_size: 300
+  semantic_memory_memory_hidden_size: 300
+  semantic_memory_memory_read_att_size: 300
+
+  #memory gate
+  memory_gate_out_dim: 512
+
+# Optimization related arguments
+solver:
+  batch_size: 16
+  num_epochs: 100
+  initial_lr: 0.001
+  lr_gamma: 0.7
+  lr_milestones:
+    - 5
+    - 7
+    - 10
+  warmup_factor: 0.2
+  warmup_epochs: 2
+  eta_min: 0.00034
