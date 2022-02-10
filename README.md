@@ -2,8 +2,10 @@
 implementation for Mucko: Multi-Layer Cross-Modal Knowledge Reasoning for Fact-based Visual Question Answering
 
 
+
+
 ## Requirements
-pytorch == 1.2.0
+pytorch == 1.2.0                                        
 dgl == 0.4.3
 
 
